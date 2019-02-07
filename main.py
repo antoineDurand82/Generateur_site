@@ -21,16 +21,22 @@ args = parser.parse_args()
 dossier_md = args.input_directory
 dossier_html = args.output_directory
 dossier_temp = args.template_directory
-prepa_md = open(dossier_md, "r")
-transf_md_to_html = transf
 # utilise le package markdown2 et traduit en html
-transf = markdown2.markdown(prepa_md.read())
 
 
-# créer une liste de tous les fichiers présent dans dossier_md
-liste = os.listdir(dossier_md)
-for files in liste:
-    # prend chaque ligne dans les fichiers et les lis
-    with open(f'{dossier_md}/{files}', "r") as text:
-        data = text.readlines()
-    print(data)
+
+
+def conv(dossier_md,dossier_html):
+    nbr_html = 0
+ # créer une liste de tous les fichiers présent dans dossier md# 
+    liste = os.listdir(dossier_md)
+    for files in liste:
+        # prend chaque ligne dans les fichiers et les lis
+        with open(f'{dossier_md}/{files}', "r") as text:
+            transf = markdown2.markdown(text.read(), extras = ["lien"], link_patterns = lien)
+            fichier_html = open(f'{dossier_html}/index{nbr_html}.html',"w")
+            fichier_html.write(transf)
+            fichier_html.close()
+            nbr_html += 1
+
+conv(dossier_md, dossier_html)
