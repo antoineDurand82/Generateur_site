@@ -31,18 +31,19 @@ dossier_temp = args.template_directory
 achtung = args.achtung
 kikoulol = args.kikoulol
 
+
 def allemand():
     liste_md = os.listdir(dossier_md)
     for x_files in liste_md:
         with open(f'{dossier_md}/{x_files}', "r+") as text:
             lecture = text.read()
             v_allemand = open(f'{dossier_md}/allemand-{x_files}', "w")
-            ecriture_s = lecture.replace("s","z")
-            ecriture_c = lecture.replace("c","z")
-            ecriture_q = lecture.replace("q","k")
-            ecriture_ph = lecture.replace("ph","f")
-            ecriture_b = lecture.replace("b","p")
-            ecriture_v = lecture.replace("v","f")
+            ecriture_s = lecture.replace("s", "z")
+            ecriture_c = lecture.replace("c", "z")
+            ecriture_q = lecture.replace("q", "k")
+            ecriture_ph = lecture.replace("ph", "f")
+            ecriture_b = lecture.replace("b", "p")
+            ecriture_v = lecture.replace("v", "f")
             v_allemand.write(ecriture_s)
             v_allemand.write(ecriture_c)
             v_allemand.write(ecriture_q)
@@ -50,6 +51,7 @@ def allemand():
             v_allemand.write(ecriture_b)
             v_allemand.write(ecriture_v)
     return v_allemand
+
 
 def kikou():
     liste_md = os.listdir(dossier_md)
@@ -71,8 +73,6 @@ def kikou():
     return v_kikou
 
 
-
-
 # utilise le package markdown2 et traduit en html
 def conv(dossier_md, dossier_html):
     nbr_html = 0
@@ -91,6 +91,7 @@ def conv(dossier_md, dossier_html):
             fichier_html.write(transf)
             fichier_html.close()
             nbr_html += 1
+
 
 if achtung:
     allemand()
