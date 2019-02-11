@@ -11,11 +11,16 @@ lien = [(re.compile(r'((([A-Za-z]{3,9}:(?:\/\/)?)(?:[\-;:&=\+\$,\w]+@)?[A-Za-z0-
 
 parser = argparse.ArgumentParser(
     description="Transposition de fichier markdown dans un dossier vers des fichiers html dans un nouveau dossier.")
-parser.add_argument('-i', '--input-directory', type=str, metavar='', required=True, help="chemin du dossier des fichiers markdown (faite attention le premier fichier qui est traité sera renommé automatiquement index.html, les autres conserveront leur nom de base")
-parser.add_argument('-o', '--output-directory', type=str, metavar='', required=True, help="chemin du dossier de fichier ou seront mis les fichiers generes en html")
-parser.add_argument('-t', '--template-directory', type=str, metavar='', help="dossier pouvant contenir les modeles de pages web a completer")
-parser.add_argument('-k', '--kikoulol', type=str, metavar='', help="Rajout de kikoulol,mdr,lol dans le texte aleatoirement")
-parser.add_argument('-a', '--achtung', type=str, metavar='', help="Aide les allemends a lire nos blogs francais")
+parser.add_argument('-i', '--input-directory', type=str, metavar='', required=True,
+                    help="chemin du dossier des fichiers markdown (faite attention le premier fichier qui est traité sera renommé automatiquement index.html, les autres conserveront leur nom de base")
+parser.add_argument('-o', '--output-directory', type=str, metavar='', required=True,
+                    help="chemin du dossier de fichier ou seront mis les fichiers generes en html")
+parser.add_argument('-t', '--template-directory', type=str, metavar='',
+                    help="dossier pouvant contenir les modeles de pages web a completer")
+parser.add_argument('-k', '--kikoulol', type=str, metavar='',
+                    help="Rajout de kikoulol,mdr,lol dans le texte aleatoirement")
+parser.add_argument('-a', '--achtung', type=str, metavar='',
+                    help="Aide les allemends a lire nos blogs francais")
 args = parser.parse_args()
 
 
@@ -33,7 +38,8 @@ def conv(dossier_md, dossier_html):
     for x_files in liste:
         # prend chaque ligne dans les fichiers et les lis
         with open(f'{dossier_md}/{x_files}', "r") as text:
-            transf = markdown2.markdown(text.read(), extras=["link-patterns", "cuddled-lists"], link_patterns=lien)
+            transf = markdown2.markdown(
+                text.read(), extras=["link-patterns", "cuddled-lists"], link_patterns=lien)
             if nbr_html < 1:
                 fichier_html = open(f'{dossier_html}/index.html', "w")
             else:
@@ -44,11 +50,10 @@ def conv(dossier_md, dossier_html):
             nbr_html += 1
 
 
-
 conv(dossier_md, dossier_html)
 
 
-######### J'ai pas réussi à faire le achtung, je suis triste
+# J'ai pas réussi à faire le achtung, je suis triste
 # def aide_a():
 #     liste_md = os.listdir(dossier_md)
 #     ligne = []
