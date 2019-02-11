@@ -8,7 +8,7 @@
 
 ### Ceci est un # titre de niveau 3
 
-## C'est un titre de niveau 2
+  ## C'est un titre de niveau 2
 
 *C'est important*
 * et pas ça

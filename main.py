@@ -2,6 +2,7 @@ import os
 import markdown2
 import re
 import argparse
+import random
 
 # extra markdown2
 
@@ -28,6 +29,48 @@ dossier_md = args.input_directory
 dossier_html = args.output_directory
 dossier_temp = args.template_directory
 achtung = args.achtung
+kikoulol = args.kikoulol
+
+def allemand():
+    liste_md = os.listdir(dossier_md)
+    for x_files in liste_md:
+        with open(f'{dossier_md}/{x_files}', "r+") as text:
+            lecture = text.read()
+            v_allemand = open(f'{dossier_md}/allemand-{x_files}', "w")
+            ecriture_s = lecture.replace("s","z")
+            ecriture_c = lecture.replace("c","z")
+            ecriture_q = lecture.replace("q","k")
+            ecriture_ph = lecture.replace("ph","f")
+            ecriture_b = lecture.replace("b","p")
+            ecriture_v = lecture.replace("v","f")
+            v_allemand.write(ecriture_s)
+            v_allemand.write(ecriture_c)
+            v_allemand.write(ecriture_q)
+            v_allemand.write(ecriture_ph)
+            v_allemand.write(ecriture_b)
+            v_allemand.write(ecriture_v)
+    return v_allemand
+
+def kikou():
+    liste_md = os.listdir(dossier_md)
+    liste_kikou = [" kikou ", " lol ", " ptdr ", " mdr ", " trololo "]
+    for x_files in liste_md:
+        with open(f'{dossier_md}/{x_files}', "r+") as text:
+            lecture = text.read()
+            v_kikou = open(f'{dossier_md}/kikou-{x_files}', "w")
+            compteur_espace = 0
+            for espace in lecture:
+                if espace == " ":
+                    if compteur_espace == 30:
+                        rand = random.choice(liste_kikou)
+                        ajout_r = lecture.replace(" ", rand)
+                        compteur_espace = 0
+                        v_kikou.write(ajout_r)
+                    else:
+                        compteur_espace += 1
+    return v_kikou
+
+
 
 
 # utilise le package markdown2 et traduit en html
@@ -49,21 +92,9 @@ def conv(dossier_md, dossier_html):
             fichier_html.close()
             nbr_html += 1
 
+if achtung:
+    allemand()
+if kikoulol:
+    kikou()
 
 conv(dossier_md, dossier_html)
-
-
-# J'ai pas réussi à faire le achtung, je suis triste
-# def aide_a():
-#     liste_md = os.listdir(dossier_md)
-#     ligne = []
-#     for file in liste_md:
-#         with open(f'{file}', "r+") as fichier:
-#             test = fichier.read()
-#             test = fichier.replace('a', 'tg')
-#             fichier.write(test)
-
-# if achtung:
-#     aide_a()
-# else:
-#     pass
