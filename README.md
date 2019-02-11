@@ -22,9 +22,9 @@ main.py -i markdown -o html
 On appelle le programme avec `main.py`.
 Voici les arguments que l'on peut passer dans notre commande:
 
--i, --input-directory | chemin du dossier des fichiers markdown (faite attention le premier fichier qui est traité sera renommé automatiquement index.html), les autres conserveront leur nom de base
--o, --output-directory | chemin du dossier de fichier ou seront mis les fichiers generes en html
--t, --template-directory | dossier pouvant contenir les modeles de pages web a completer
+-i, --input-directory | chemin du dossier des fichiers markdown (faite attention le premier fichier qui est traité sera renommé automatiquement index.html), les autres conserveront leur nom de base<br>
+-o, --output-directory | chemin du dossier de fichier ou seront mis les fichiers generes en html<br>
+-t, --template-directory | dossier pouvant contenir les modeles de pages web a completer<br>
 -a, --achtung | Aide les allemends a lire nos blogs francais
 
 
