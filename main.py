@@ -2,7 +2,6 @@ import os
 import markdown2
 import re
 import argparse
-import codecs
 
 # extra markdown2
 
@@ -24,9 +23,9 @@ dossier_md = args.input_directory
 dossier_html = args.output_directory
 dossier_temp = args.template_directory
 achtung = args.achtung
+
+
 # utilise le package markdown2 et traduit en html
-
-
 def conv(dossier_md, dossier_html):
     nbr_html = 0
  # créer une liste de tous les fichiers présent dans dossier md#
@@ -48,16 +47,18 @@ def conv(dossier_md, dossier_html):
 
 conv(dossier_md, dossier_html)
 
-def aide_a():
-    liste_md = os.listdir(dossier_md)
-    ligne = []
-    for file in liste_md:
-        with open(f'{file}', "r+") as fichier:
-            test = fichier.read()
-            test = fichier.replace('a', 'tg')
-            fichier.write(test)
 
-if achtung:
-    aide_a()
-else:
-    pass
+######### J'ai pas réussi à faire le achtung, je suis triste
+# def aide_a():
+#     liste_md = os.listdir(dossier_md)
+#     ligne = []
+#     for file in liste_md:
+#         with open(f'{file}', "r+") as fichier:
+#             test = fichier.read()
+#             test = fichier.replace('a', 'tg')
+#             fichier.write(test)
+
+# if achtung:
+#     aide_a()
+# else:
+#     pass
